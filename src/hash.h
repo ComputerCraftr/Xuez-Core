@@ -12,6 +12,7 @@
 #include <crypto/ripemd160.h>
 #include <crypto/sha1.h>
 #include <crypto/sha256.h>
+//#include <crypto/sha512.h>
 #include <prevector.h>
 #include <serialize.h>
 #include <uint256.h>
@@ -444,6 +445,7 @@ inline uint256 HashXevan(const T1& in1)
     sph_sha512_init(&ctx_sha2);
     sph_sha512(&ctx_sha2, static_cast<const void*>(&hash[14]), worknumber);
     sph_sha512_close(&ctx_sha2, static_cast<void*>(&hash[15]));
+    //CSHA512().Write(reinterpret_cast<const unsigned char*>(&hash[14]), worknumber).Finalize(reinterpret_cast<unsigned char*>(&hash[15]));
 
     sph_haval256_5_init(&ctx_haval);
     sph_haval256_5(&ctx_haval, static_cast<const void*>(&hash[15]), worknumber);
@@ -513,6 +515,7 @@ inline uint256 HashXevan(const T1& in1)
     sph_sha512_init(&ctx_sha2);
     sph_sha512(&ctx_sha2, static_cast<const void*>(&hash[31]), worknumber);
     sph_sha512_close(&ctx_sha2, static_cast<void*>(&hash[32]));
+    //CSHA512().Write(reinterpret_cast<const unsigned char*>(&hash[31]), worknumber).Finalize(reinterpret_cast<unsigned char*>(&hash[32]));
 
     sph_haval256_5_init(&ctx_haval);
     sph_haval256_5(&ctx_haval, static_cast<const void*>(&hash[32]), worknumber);

@@ -46,10 +46,8 @@ void sha256_init(uint32_t *state)
 }
 
 /* Necessary bit shifting functions */
-static inline uint32_t swab32(uint32_t v)
-{
-    return bswap_32(v);
-}
+#define swab32(v) \
+    bswap_32(v)
 
 static inline uint32_t be32dec(const void *pp)
 {
